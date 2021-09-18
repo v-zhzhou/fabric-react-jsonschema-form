@@ -7,7 +7,7 @@ import {
 } from "office-ui-fabric-react";
 import * as React from "react";
 import { WidgetProps } from "react-jsonschema-form";
-import * as ReactMarkDown from "react-markdown";
+import ReactMarkDown from "react-markdown";
 
 const onChange = (props: WidgetProps) => {
   props.onChange(!props.value);
@@ -39,7 +39,7 @@ export const FabricCheckbox = (props: WidgetProps & { label: string }) => (
       tooltipProps={{
         onRenderContent: props =>
           props ? (
-            <ReactMarkDown linkTarget="_blank" source={props.content} />
+            <ReactMarkDown linkTarget="_blank" children={props.content || ""} />
           ) : null
       }}
     >

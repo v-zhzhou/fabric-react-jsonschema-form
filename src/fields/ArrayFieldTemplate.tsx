@@ -8,7 +8,7 @@ import {
 } from "office-ui-fabric-react";
 import * as React from "react";
 import { ArrayFieldTemplateProps } from "react-jsonschema-form";
-import * as ReactMarkDown from "react-markdown";
+import ReactMarkDown from "react-markdown";
 
 function Labeli(props) {
   const { label, required, id } = props;
@@ -43,7 +43,7 @@ export const ArrayFieldTemplate = (props: ArrayFieldTemplateProps) => {
             tooltipProps={{
               onRenderContent: props =>
                 props ? (
-                  <ReactMarkDown linkTarget="_blank" source={props.content} />
+                  <ReactMarkDown linkTarget="_blank" children={props.content || ""} />
                 ) : null
             }}
           >
