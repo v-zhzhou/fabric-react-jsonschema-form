@@ -1,5 +1,5 @@
 {
-  "name": "fabric-react-jsonschema-form",
+  "name": "@azure/fabric-react-jsonschema-form",
   "version": "0.1.5",
   "description": "Fabric components for react-jsonschema-form",
   "main": "bin/index.js",
