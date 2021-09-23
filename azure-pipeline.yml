@@ -1,0 +1,42 @@
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See License.txt in the project root for license information.
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+trigger:
+- master
+
+steps:
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x'
+
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    verbose: false
+
+- task: Npm@1
+  displayName: 'npm build'
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: run build
+
+- task: Npm@1
+  displayName: 'npm pack'
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: pack
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: drop'
+  inputs:
+    Contents: '*.tgz'
+    TargetFolder: drop
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: $(Build.SourcesDirectory)/drop
